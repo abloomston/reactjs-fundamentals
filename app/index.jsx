@@ -1,14 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ColorList = React.createClass({
-  render: function(){
-    return (
-      <ul>
-        {this.props.colors.map(color => <li>{color}</li>)}
-      </ul>
-    );
-  }
-});
+var ColorList = props => (
+  <ul>
+    {props.colors.map(color => <li>{color}</li>)}
+  </ul>
+);
 var HelloWorld = React.createClass({
   render: function(){
     return (
