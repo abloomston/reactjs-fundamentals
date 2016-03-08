@@ -1,0 +1,19 @@
+{
+  "name": "reactjs-fundamentals",
+  "version": "1.0.0",
+  "description": "React.js Fundamentals Coursework",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abloomston/reactjs-fundamentals.git"
+  },
+  "author": "abloomston",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abloomston/reactjs-fundamentals/issues"
+  },
+  "homepage": "https://github.com/abloomston/reactjs-fundamentals#readme"
+}
