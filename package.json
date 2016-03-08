@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/abloomston/reactjs-fundamentals/issues"
   },
-  "homepage": "https://github.com/abloomston/reactjs-fundamentals#readme"
+  "homepage": "https://github.com/abloomston/reactjs-fundamentals#readme",
+  "devDependencies": {
+    "webpack": "^1.12.14"
+  }
 }
