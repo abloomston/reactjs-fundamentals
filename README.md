@@ -6,6 +6,6 @@ See http://courses.reactjsprogram.com/courses/reactjsfundamentals
 
 ```
 npm install
-node_modules/.bin/webpack
-open dist/index.html
+npm run start
+open http://localhost:8080/webpack-dev-server/
 ```
