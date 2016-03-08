@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/abloomston/reactjs-fundamentals#readme",
   "devDependencies": {
+    "babel-core": "^6.6.5",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0",
     "html-webpack-plugin": "^2.9.0",
     "webpack": "^1.12.14"
   }
