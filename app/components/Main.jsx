@@ -1,8 +1,7 @@
 var React = require('react');
 
 var Main = props => (
-	<div>
-    <h1>This is Main</h1>
+	<div className='main-container'>
     {props.children}
   </div>
 );

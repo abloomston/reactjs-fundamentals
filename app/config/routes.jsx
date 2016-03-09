@@ -12,7 +12,7 @@ var Home = require('../components/Home.jsx');
 var routes = (
   <Router history={hashHistory}>
     <Route path='/' component={Main}>
-      <Route path='/home' component={Home}/>
+      <IndexRoute component={Home}/>
     </Route>
   </Router>
 );
