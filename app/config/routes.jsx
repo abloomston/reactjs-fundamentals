@@ -14,7 +14,7 @@ var ConfirmBattleContainer = require('../containers/ConfirmBattleContainer.jsx')
 var BattleResultsContainer = require('../containers/BattleResultsContainer.jsx');
 
 function handleUsername (username) {
-  // /battle => /battle/:playerOne => /battle/:playerOne/:playerTwo/confirm
+  // => /battle/:playerOne => /battle/:playerOne/:playerTwo/confirm
   if (!this.props.routeParams.playerOne) {
     history.push(`/battle/${username}`);
   } else {
@@ -27,6 +27,7 @@ function getPlayerUsernames() {
 }
 
 function handleBattle (playersInfo) {
+  // /battle/:playerOne/:playerTwo/results
   history.push({
     pathname: `/battle/${this.props.routeParams.playerOne}/${this.props.routeParams.playerTwo}/results`,
     state: {
