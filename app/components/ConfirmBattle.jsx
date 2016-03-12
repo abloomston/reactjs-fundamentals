@@ -1,11 +1,8 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
+var UserDetails = require('./UserDetails.jsx');
 var styles = require('../styles/index.jsx');
-
-var PlayerInfo = props => (
-  <div>{props.playerInfo.login}</div>
-);
 
 var ConfirmBattle = props => (
   props.isLoading ? (
@@ -16,11 +13,11 @@ var ConfirmBattle = props => (
       <div className="col-sm-8 col-sm-offset-2">
         <div className="col-sm-6">
           <p className="lead">Player 1</p>
-          <PlayerInfo playerInfo={props.playersInfo[0]}/>
+          <UserDetails info={props.playersInfo[0]}/>
         </div>
         <div className="col-sm-6">
           <p className="lead">Player 2</p>
-          <PlayerInfo playerInfo={props.playersInfo[1]}/>
+          <UserDetails info={props.playersInfo[1]}/>
         </div>
       </div>
       <div className="col-sm-8 col-sm-offset-2">
