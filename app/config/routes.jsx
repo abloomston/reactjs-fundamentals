@@ -47,7 +47,7 @@ var Routes = React.createClass({
     return (
       <Router history={history}>
         <Route path='/' component={Main}>
-          <IndexRoute startPath='battle' component={Home}/>
+          <IndexRoute startOver={startOver} component={Home}/>
           <Route path='battle' header="Player One" setUsername={handleUsername} component={PromptContainer}/>
           <Route path='battle/:playerOne' header="Player Two" setUsername={handleUsername} component={PromptContainer}/>
           <Route path='battle/:playerOne/:playerTwo/confirm'
