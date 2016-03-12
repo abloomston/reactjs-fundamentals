@@ -35,7 +35,7 @@ function calculateScores (players) {
 
 function calculateResults (scores) {
   const maxScore = Math.max.apply(null, scores);
-  const maxScoreCount = scores.filter(score => score == maxScore);
+  const maxScoreCount = scores.filter(score => score == maxScore).length;
   const winnerLabel = maxScoreCount > 1 ? 'Tie': 'Winner';
   return scores.map(function (score) {
     return {
