@@ -17,7 +17,7 @@ var BattleContainer = React.createClass({
     return {
       battleState: 'Loading', // Loading -> Confirming -> Results
       playersInfo: [],
-      scores: []
+      results: []
     };
   },
 
@@ -28,7 +28,7 @@ var BattleContainer = React.createClass({
           this.setState({
             battleState: 'Confirming',
             playersInfo: infos,
-            scores: []
+            results: []
           });
         }.bind(this));
     }
@@ -37,7 +37,16 @@ var BattleContainer = React.createClass({
   confirmBattle: function() {
     this.setState({
       battleState: 'Results',
-      scores: [1, 1]
+      results: [
+        {
+          label: 'Tie',
+          score: 1
+        },
+        {
+          label: 'Tie',
+          score: 1
+        }
+      ]
     });
   },
 
@@ -46,7 +55,7 @@ var BattleContainer = React.createClass({
 			<Battle
               battleState={this.state.battleState}
               playersInfo={this.state.playersInfo}
-              scores={this.state.scores}
+              results={this.state.results}
               confirmBattle={this.confirmBattle}
               startOver={this.props.route.startOver}
       />

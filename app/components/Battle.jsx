@@ -18,12 +18,12 @@ var Battle = props => (
   {props.battleState != 'Loading' &&
     <div className="col-sm-8 col-sm-offset-2">
       <div className="col-sm-6">
-        <p className="lead">Player 1</p>
-        <UserDetails score={props.battleState == "Results" ? props.scores[0] : undefined} info={props.playersInfo[0]}/>
+        <p className="lead">{props.battleState == "Results" ? props.results[0].label : "Player 1"}</p>
+        <UserDetails score={props.battleState == "Results" ? props.results[0].score : undefined} info={props.playersInfo[0]}/>
       </div>
       <div className="col-sm-6">
-        <p className="lead">Player 2</p>
-        <UserDetails score={props.battleState == "Results" ? props.scores[1] : undefined}info={props.playersInfo[1]}/>
+        <p className="lead">{props.battleState == "Results" ? props.results[1].label : "Player 2"}</p>
+        <UserDetails score={props.battleState == "Results" ? props.results[1].score : undefined} info={props.playersInfo[1]}/>
       </div>
     </div>}
   {props.battleState != 'Loading' &&
@@ -44,7 +44,7 @@ var Battle = props => (
 Battle.propTypes = {
   battleState: PropTypes.oneOf(BattleStates).isRequired,
   playersInfo: PropTypes.array.isRequired,
-  scores: PropTypes.array.isRequired,
+  results: PropTypes.array.isRequired,
   confirmBattle: PropTypes.func.isRequired,
   startOver: PropTypes.func.isRequired
 };
