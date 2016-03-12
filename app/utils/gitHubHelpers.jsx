@@ -10,7 +10,10 @@ function getUserInfo (username) {
 var helpers = {
 	getPlayersInfo: function(usernames) {
 		return axios.all(usernames.map(getUserInfo))
-      .then(infos => infos.map(info => info.data));
+      .then(infos => infos.map(info => info.data))
+      .catch(function (err) {
+        console.warn('Error in getPlayersInfo', err);
+      });
 	}
 };
 
