@@ -4,12 +4,16 @@ var PropTypes = React.PropTypes;
 var UserDetails = require('./UserDetails.jsx');
 var styles = require('../styles/index.jsx');
 
+const BattleStates = ['Loading', 'Confirming', 'Results'];
+const TitleMap = {
+  'Loading': 'Loading',
+  'Confirming': 'Confirm Players',
+  'Results': 'Results'
+};
+
 var Battle = props => (
   <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
-
-  {props.battleState == 'Loading' && <h1>Loading</h1>}
-  {props.battleState == 'Confirming' && <h1>Confirm Players</h1>}
-  {props.battleState == 'Results' && <h1>Results</h1>}
+  <h1>{TitleMap[props.battleState]}</h1>
 
   {props.battleState != 'Loading' &&
     <div className="col-sm-8 col-sm-offset-2">
@@ -38,7 +42,7 @@ var Battle = props => (
 );
 
 Battle.propTypes = {
-  battleState: PropTypes.oneOf(['Loading', 'Confirming', 'Results']).isRequired,
+  battleState: PropTypes.oneOf(BattleStates).isRequired,
   playersInfo: PropTypes.array.isRequired,
   scores: PropTypes.array.isRequired,
   confirmBattle: PropTypes.func.isRequired,
