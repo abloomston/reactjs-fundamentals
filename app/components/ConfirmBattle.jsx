@@ -4,7 +4,7 @@ var PropTypes = React.PropTypes;
 var styles = require('../styles/index.jsx');
 
 var PlayerInfo = props => (
-  <div>{props.playerInfo.username}</div>
+  <div>{props.playerInfo.login}</div>
 );
 
 var ConfirmBattle = props => (
