@@ -25,10 +25,10 @@ var ConfirmBattle = props => (
       </div>
       <div className="col-sm-8 col-sm-offset-2">
         <div className="col-sm-12" style={styles.space}>
-          <button className="btn btn-block btn-success" onClick={props.confirmBattle}>Battle!</button>
+          <button type="button" className="btn btn-lg btn-success" onClick={props.confirmBattle}>Battle!</button>
         </div>
         <div className="col-sm-12" style={styles.space}>
-          <button className="btn btn-block btn-warning" onClick={props.startOver}>Start Over</button>
+          <button type="button" className="btn btn-lg btn-warning" onClick={props.startOver}>Start Over</button>
         </div>
       </div>
     </div>
