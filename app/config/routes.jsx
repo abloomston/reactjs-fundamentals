@@ -13,34 +13,34 @@ var PromptContainer = require('../containers/PromptContainer.jsx');
 var ConfirmBattleContainer = require('../containers/ConfirmBattleContainer.jsx');
 var BattleResultsContainer = require('../containers/BattleResultsContainer.jsx');
 
-var Routes = React.createClass({
+function handleUsername (username) {
+  // /battle => /battle/:playerOne => /battle/:playerOne/:playerTwo/confirm
+  if (!this.props.routeParams.playerOne) {
+    history.push(`/battle/${username}`);
+  } else {
+    history.push(`/battle/${this.props.routeParams.playerOne}/${username}/confirm`);
+  }
+}
 
-  handleUsername: function (routeParams, username) {
-    // /battle => /battle/:playerOne => /battle/:playerOne/:playerTwo/confirm
-    if (!routeParams.playerOne) {
-      history.push(`/battle/${username}`);
-    } else {
-      history.push(`/battle/${routeParams.playerOne}/${username}/confirm`);
+function handleBattle (playersInfo) {
+  history.push({
+    pathname: `/battle/${this.props.routeParams.playerOne}/${this.props.routeParams.playerTwo}/results`,
+    state: {
+      playersInfo: playersInfo
     }
-  },
+  });
+}
 
-  handleBattle: function (routeParams, playersInfo) {
-    history.push({
-      pathname: `/battle/${routeParams.playerOne}/${routeParams.playerTwo}/results`,
-      state: {
-        playersInfo: playersInfo
-      }
-    });
-  },
+var Routes = React.createClass({
 
   render: function () {
     return (
       <Router history={history}>
         <Route path='/' component={Main}>
           <IndexRoute startPath='battle' component={Home}/>
-          <Route path='battle' header="Player One" setUsername={this.handleUsername} component={PromptContainer}/>
-          <Route path='battle/:playerOne' header="Player Two" setUsername={this.handleUsername} component={PromptContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/confirm' confirmBattle={this.handleBattle} component={ConfirmBattleContainer}/>
+          <Route path='battle' header="Player One" setUsername={handleUsername} component={PromptContainer}/>
+          <Route path='battle/:playerOne' header="Player Two" setUsername={handleUsername} component={PromptContainer}/>
+          <Route path='battle/:playerOne/:playerTwo/confirm' confirmBattle={handleBattle} component={ConfirmBattleContainer}/>
           <Route path='battle/:playerOne/:playerTwo/results' startPath='battle' component={BattleResultsContainer}/>
         </Route>
       </Router>

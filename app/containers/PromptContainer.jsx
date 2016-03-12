@@ -23,7 +23,7 @@ var PromptContainer = React.createClass({
       username: ''
     });
 
-    this.props.route.setUsername(this.props.routeParams, username);
+    this.props.route.setUsername.call(this, username);
   },
 
   render: function() {
