@@ -4,22 +4,38 @@ var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
-var hashHistory = ReactRouter.hashHistory;
+
+var history = ReactRouter.hashHistory;
 
 var Main = require('../components/Main.jsx');
 var Home = require('../components/Home.jsx');
 var PromptContainer = require('../containers/PromptContainer.jsx');
 var ConfirmBattleContainer = require('../containers/ConfirmBattleContainer.jsx');
 
-var routes = (
-  <Router history={hashHistory}>
-    <Route path='/' component={Main}>
-      <IndexRoute component={Home}/>
-      <Route path='playerOne' header="Player One" component={PromptContainer}/>
-      <Route path='playerTwo/:playerOne' header="Player Two" component={PromptContainer}/>
-      <Route path='battle' component={ConfirmBattleContainer}/>
-    </Route>
-  </Router>
-);
+var Routes = React.createClass({
 
-module.exports = routes;
+  handleUsername: function (routeParams, username) {
+    // /battle => /battle/:playerOne => /battle/:playerOne/:playerTwo
+    if (!routeParams.playerOne) {
+      history.push(`/battle/${username}`);
+    } else {
+      history.push(`/battle/${routeParams.playerOne}/${username}`);
+    }
+  },
+
+  render: function () {
+    return (
+      <Router history={history}>
+        <Route path='/' component={Main}>
+          <IndexRoute startPath='battle' component={Home}/>
+          <Route path='battle' header="Player One" setUsername={this.handleUsername} component={PromptContainer}/>
+          <Route path='battle/:playerOne' header="Player Two" setUsername={this.handleUsername} component={PromptContainer}/>
+          <Route path='battle/:playerOne/:playerTwo' component={ConfirmBattleContainer}/>
+        </Route>
+      </Router>
+    );
+  }
+
+});
+
+module.exports = <Routes/>;

@@ -1,11 +1,8 @@
 var React = require('react');
+
 var Prompt = require('../components/Prompt.jsx');
 
 var PromptContainer = React.createClass({
-
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
 
   getInitialState: function () {
     return {
@@ -26,17 +23,7 @@ var PromptContainer = React.createClass({
       username: ''
     });
 
-    if (this.props.routeParams.playerOne) {
-      this.context.router.push({
-        pathname: '/battle',
-        query: {
-          playerOne: this.props.routeParams.playerOne,
-          playerTwo: username
-        }
-      });
-    } else {
-      this.context.router.push(`/playerTwo/${username}`);
-    }
+    this.props.route.setUsername(this.props.routeParams, username);
   },
 
   render: function() {

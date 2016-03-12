@@ -11,7 +11,7 @@ var Home = React.createClass({
 			<div className='jumbotron col-sm-12 text-center' style={transparentBg}>
 				<h1>Github Battle</h1>
 				<p className="lead">Some fancy motto</p>
-				<Link to="/playerOne">
+				<Link to={this.props.route.startPath}>
 					<button type="button" className="btn btn-lg btn-success">Get Started</button>
 				</Link>
 			</div>
