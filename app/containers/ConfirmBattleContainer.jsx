@@ -5,10 +5,6 @@ var githubHelpers = require('../utils/githubHelpers.jsx');
 
 var ConfirmBattleContainer = React.createClass({
 
-  contextTypes: {
-    router: React.PropTypes.object.isRequired
-  },
-
   getInitialState: function() {
     return {
       isLoading: true,
