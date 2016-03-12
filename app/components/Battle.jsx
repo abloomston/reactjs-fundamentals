@@ -4,10 +4,11 @@ var PropTypes = React.PropTypes;
 var UserDetails = require('./UserDetails.jsx');
 var styles = require('../styles/index.jsx');
 
-const BattleStates = ['Loading', 'Confirming', 'Results'];
+const BattleStates = ['Loading', 'Confirming', 'Battling', 'Results'];
 const TitleMap = {
   'Loading': 'Loading',
   'Confirming': 'Confirm Players',
+  'Battling': 'Battling',
   'Results': 'Results'
 };
 

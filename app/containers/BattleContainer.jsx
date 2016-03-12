@@ -27,8 +27,7 @@ var BattleContainer = React.createClass({
         .then(function(infos) {
           this.setState({
             battleState: 'Confirming',
-            playersInfo: infos,
-            results: []
+            playersInfo: infos
           });
         }.bind(this));
     }
@@ -36,18 +35,24 @@ var BattleContainer = React.createClass({
 
   confirmBattle: function() {
     this.setState({
-      battleState: 'Results',
-      results: [
-        {
-          label: 'Tie',
-          score: 1
-        },
-        {
-          label: 'Tie',
-          score: 1
-        }
-      ]
+      battleState: 'Battling'
     });
+    // TODO replace timeout with actual calculation
+    setTimeout(function () {
+      this.setState({
+        battleState: 'Results',
+        results: [
+          {
+            label: 'Tie',
+            score: 1
+          },
+          {
+            label: 'Tie',
+            score: 1
+          }
+        ]
+      });
+    }.bind(this), 3000);
   },
 
 	render: function() {
