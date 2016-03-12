@@ -29,10 +29,7 @@ function getPlayersData (player) {
 }
 
 function calculateScores (players) {
-  return [
-    players[0].followers * 3 + players[0].totalStars,
-    players[1].followers * 3 + players[1].totalStars
-  ]
+  return players.map(player => player.followers * 3 + player.totalStars);
 }
 
 var helpers = {
