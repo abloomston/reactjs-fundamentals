@@ -1,9 +1,18 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 
 var ConfirmBattle = require('../components/ConfirmBattle.jsx');
 var githubHelpers = require('../utils/githubHelpers.jsx');
 
 var ConfirmBattleContainer = React.createClass({
+
+  propTypes: {
+    route: PropTypes.shape({
+      getPlayerUsernames: PropTypes.func.isRequired,
+      confirmBattle: PropTypes.func.isRequired,
+      startOver: PropTypes.func.isRequired
+    })
+  },
 
   getInitialState: function() {
     return {
