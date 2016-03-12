@@ -8,7 +8,7 @@ var Home = React.createClass({
 			<div className='jumbotron col-sm-12 text-center' style={transparentBg}>
 				<h1>Github Battle</h1>
 				<p className="lead">Some fancy motto</p>
-        <button className="btn btn-lg btn-success" onClick={props.route.startOver}>Get Started</button>
+        <button className="btn btn-lg btn-success" onClick={this.props.route.startOver}>Get Started</button>
 			</div>
 		);
 	}
