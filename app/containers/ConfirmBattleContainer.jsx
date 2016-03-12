@@ -28,6 +28,7 @@ var ConfirmBattleContainer = React.createClass({
               isLoading={this.state.isLoading}
               playersInfo={this.state.playersInfo}
               confirmBattle={this.props.route.confirmBattle.bind(this, this.state.playersInfo)}
+              startOver={this.props.route.startOver}
       />
 		);
 	}

@@ -27,13 +27,18 @@ function getPlayerUsernames() {
 }
 
 function handleBattle (playersInfo) {
-  // /battle/:playerOne/:playerTwo/results
+  // => /battle/:playerOne/:playerTwo/results
   history.push({
     pathname: `/battle/${this.props.routeParams.playerOne}/${this.props.routeParams.playerTwo}/results`,
     state: {
       playersInfo: playersInfo
     }
   });
+}
+
+function startOver () {
+  // => /battle
+  history.push('/battle');
 }
 
 var Routes = React.createClass({
@@ -45,7 +50,9 @@ var Routes = React.createClass({
           <IndexRoute startPath='battle' component={Home}/>
           <Route path='battle' header="Player One" setUsername={handleUsername} component={PromptContainer}/>
           <Route path='battle/:playerOne' header="Player Two" setUsername={handleUsername} component={PromptContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/confirm' confirmBattle={handleBattle} getPlayerUsernames={getPlayerUsernames} component={ConfirmBattleContainer}/>
+          <Route path='battle/:playerOne/:playerTwo/confirm'
+                  getPlayerUsernames={getPlayerUsernames} confirmBattle={handleBattle} startOver={startOver}
+                  component={ConfirmBattleContainer}/>
           <Route path='battle/:playerOne/:playerTwo/results' startPath='battle' component={BattleResultsContainer}/>
         </Route>
       </Router>

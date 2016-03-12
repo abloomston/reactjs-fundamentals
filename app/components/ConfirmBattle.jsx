@@ -1,23 +1,36 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-function puke (object) {
-  return <pre>{JSON.stringify(object, null, ' ')}</pre>
-}
+var styles = require('../styles/index.jsx');
+
+var PlayerInfo = props => (
+  <div>{props.playerInfo.username}</div>
+);
 
 var ConfirmBattle = props => (
   props.isLoading ? (
 	  <p>Loading</p>
   ) : (
-    <div>
-      <p>Confirm Battle</p>
-      {puke(props)}
-      <form onSubmit={props.confirmBattle}>
-        <div className="form-group col-sm-4 col-sm-offset-4">
-          <button className="btn btn-block btn-success" type="submit">Battle!</button>
+    <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
+      <h1>Confirm Players</h1>
+      <div className="col-sm-8 col-sm-offset-2">
+        <div className="col-sm-6">
+          <p className="lead">Player 1</p>
+          <PlayerInfo playerInfo={props.playersInfo[0]}/>
         </div>
-      </form>
-
+        <div className="col-sm-6">
+          <p className="lead">Player 2</p>
+          <PlayerInfo playerInfo={props.playersInfo[1]}/>
+        </div>
+      </div>
+      <div className="col-sm-8 col-sm-offset-2">
+        <div className="col-sm-12" style={styles.space}>
+          <button className="btn btn-block btn-success" onClick={props.confirmBattle}>Battle!</button>
+        </div>
+        <div className="col-sm-12" style={styles.space}>
+          <button className="btn btn-block btn-warning" onClick={props.startOver}>Start Over</button>
+        </div>
+      </div>
     </div>
   )
 );
@@ -25,7 +38,8 @@ var ConfirmBattle = props => (
 ConfirmBattle.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   playersInfo: PropTypes.array.isRequired,
-  confirmBattle: PropTypes.func.isRequired
+  confirmBattle: PropTypes.func.isRequired,
+  startOver: PropTypes.func.isRequired
 };
 
 module.exports = ConfirmBattle;
