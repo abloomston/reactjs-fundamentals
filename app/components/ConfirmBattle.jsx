@@ -25,7 +25,7 @@ var ConfirmBattle = props => (
           <button type="button" className="btn btn-lg btn-success" onClick={props.confirmBattle}>Battle!</button>
         </div>
         <div className="col-sm-12" style={styles.space}>
-          <button type="button" className="btn btn-lg btn-warning" onClick={props.startOver}>Start Over</button>
+          <button type="button" className="btn btn-lg btn-danger" onClick={props.startOver}>Start Over</button>
         </div>
       </div>
     </div>
