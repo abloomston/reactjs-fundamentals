@@ -37,22 +37,13 @@ var BattleContainer = React.createClass({
     this.setState({
       battleState: 'Battling'
     });
-    // TODO replace timeout with actual calculation
-    setTimeout(function () {
-      this.setState({
-        battleState: 'Results',
-        results: [
-          {
-            label: 'Tie',
-            score: 1
-          },
-          {
-            label: 'Tie',
-            score: 1
-          }
-        ]
-      });
-    }.bind(this), 3000);
+    githubHelpers.battle(this.state.playersInfo)
+      .then(function(results) {
+        this.setState({
+          battleState: 'Results',
+          results: results
+        });
+      }.bind(this));
   },
 
 	render: function() {
