@@ -22,6 +22,10 @@ function handleUsername (username) {
   }
 }
 
+function getPlayerUsernames() {
+  return [this.props.routeParams.playerOne, this.props.routeParams.playerTwo];
+}
+
 function handleBattle (playersInfo) {
   history.push({
     pathname: `/battle/${this.props.routeParams.playerOne}/${this.props.routeParams.playerTwo}/results`,
@@ -40,7 +44,7 @@ var Routes = React.createClass({
           <IndexRoute startPath='battle' component={Home}/>
           <Route path='battle' header="Player One" setUsername={handleUsername} component={PromptContainer}/>
           <Route path='battle/:playerOne' header="Player Two" setUsername={handleUsername} component={PromptContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/confirm' confirmBattle={handleBattle} component={ConfirmBattleContainer}/>
+          <Route path='battle/:playerOne/:playerTwo/confirm' confirmBattle={handleBattle} getPlayerUsernames={getPlayerUsernames} component={ConfirmBattleContainer}/>
           <Route path='battle/:playerOne/:playerTwo/results' startPath='battle' component={BattleResultsContainer}/>
         </Route>
       </Router>

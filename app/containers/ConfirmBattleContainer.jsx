@@ -13,7 +13,7 @@ var ConfirmBattleContainer = React.createClass({
   },
 
   componentDidMount: function() {
-    githubHelpers.getPlayersInfo([this.props.routeParams.playerOne, this.props.routeParams.playerTwo])
+    githubHelpers.getPlayersInfo(this.props.route.getPlayerUsernames.call(this))
       .then(function(infos) {
         this.setState({
           isLoading: false,
