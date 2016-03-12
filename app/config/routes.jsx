@@ -53,7 +53,7 @@ var Routes = React.createClass({
           <Route path='battle/:playerOne/:playerTwo/confirm'
                   getPlayerUsernames={getPlayerUsernames} confirmBattle={handleBattle} startOver={startOver}
                   component={ConfirmBattleContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/results' startPath='battle' component={BattleResultsContainer}/>
+          <Route path='battle/:playerOne/:playerTwo/results' startOver={startOver} component={BattleResultsContainer}/>
         </Route>
       </Router>
     );
