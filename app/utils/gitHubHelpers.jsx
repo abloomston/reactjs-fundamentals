@@ -32,6 +32,18 @@ function calculateScores (players) {
   return players.map(player => player.followers * 3 + player.totalStars);
 }
 
+function calculateResults (scores) {
+  const maxScore = Math.max.apply(null, scores);
+  const maxScoreCount = scores.filter(score => score == maxScore);
+  const winnerLabel = maxScoreCount > 1 ? 'Tie': 'Winner';
+  return scores.map(function (score) {
+    return {
+      score: score,
+      label: score == maxScore ? winnerLabel : 'Loser'
+    };
+  });
+}
+
 var helpers = {
 	getPlayersInfo: function(usernames) {
 		return axios.all(usernames.map(getUserInfo))
@@ -45,6 +57,7 @@ var helpers = {
     var playerTwoData = getPlayersData(players[1]);
     return axios.all([playerOneData, playerTwoData])
       .then(calculateScores)
+      .then(calculateResults)
       .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
   }
 };
