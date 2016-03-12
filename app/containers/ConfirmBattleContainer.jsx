@@ -1,6 +1,7 @@
 var React = require('react');
 
 var ConfirmBattle = require('../components/ConfirmBattle.jsx');
+var githubHelpers = require('../utils/githubHelpers.jsx');
 
 var ConfirmBattleContainer = React.createClass({
 
@@ -17,7 +18,9 @@ var ConfirmBattleContainer = React.createClass({
 
   componentDidMount: function() {
     const query = this.props.location.query;
-    // TODO fetch from github and update state
+    githubHelpers.getPlayersInfo([query.playerOne, query.playerTwo]).then(function(infos) {
+      console.log(infos);
+    });
   },
 
 	render: function() {
