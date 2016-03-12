@@ -10,30 +10,19 @@ var history = ReactRouter.hashHistory;
 var Main = require('../components/Main.jsx');
 var Home = require('../components/Home.jsx');
 var PromptContainer = require('../containers/PromptContainer.jsx');
-var ConfirmBattleContainer = require('../containers/ConfirmBattleContainer.jsx');
-var BattleResultsContainer = require('../containers/BattleResultsContainer.jsx');
+var BattleContainer = require('../containers/BattleContainer.jsx');
 
 function handleUsername (username) {
-  // => /battle/:playerOne => /battle/:playerOne/:playerTwo/confirm
+  // => /battle/:playerOne => /battle/:playerOne/:playerTwo
   if (!this.props.routeParams.playerOne) {
     history.push(`/battle/${username}`);
   } else {
-    history.push(`/battle/${this.props.routeParams.playerOne}/${username}/confirm`);
+    history.push(`/battle/${this.props.routeParams.playerOne}/${username}`);
   }
 }
 
 function getPlayerUsernames() {
   return [this.props.routeParams.playerOne, this.props.routeParams.playerTwo];
-}
-
-function handleBattle (playersInfo) {
-  // => /battle/:playerOne/:playerTwo/results
-  history.push({
-    pathname: `/battle/${this.props.routeParams.playerOne}/${this.props.routeParams.playerTwo}/results`,
-    state: {
-      playersInfo: playersInfo
-    }
-  });
 }
 
 function startOver () {
@@ -50,10 +39,9 @@ var Routes = React.createClass({
           <IndexRoute startOver={startOver} component={Home}/>
           <Route path='battle' header="Player One" setUsername={handleUsername} component={PromptContainer}/>
           <Route path='battle/:playerOne' header="Player Two" setUsername={handleUsername} component={PromptContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/confirm'
-                  getPlayerUsernames={getPlayerUsernames} confirmBattle={handleBattle} startOver={startOver}
-                  component={ConfirmBattleContainer}/>
-          <Route path='battle/:playerOne/:playerTwo/results' startOver={startOver} component={BattleResultsContainer}/>
+          <Route path='battle/:playerOne/:playerTwo'
+                  getPlayerUsernames={getPlayerUsernames} startOver={startOver}
+                  component={BattleContainer}/>
         </Route>
       </Router>
     );
