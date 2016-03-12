@@ -54,9 +54,8 @@ var helpers = {
       });
 	},
   battle: function (players) {
-    var playerOneData = getPlayersData(players[0]);
-    var playerTwoData = getPlayersData(players[1]);
-    return axios.all([playerOneData, playerTwoData])
+    var playersData = players.map(getPlayersData);
+    return axios.all(playersData)
       .then(calculateScores)
       .then(calculateResults)
       .catch(function (err) {console.warn('Error in getPlayersInfo: ', err)})
