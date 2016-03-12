@@ -1,7 +1,7 @@
 var axios = require('axios');
 
-const client_id = 'ID';
-const client_secret = 'SECRET';
+const client_id = GITHUB_CLIENT_ID; // set as env variable before running webpack
+const client_secret = GITHUB_CLIENT_SECRET; // set as env variable before running webpack
 
 function getUserInfo (username) {
 	return axios.get(`https://api.github.com/users/${username}?client_id=${client_id}&client_secret=${client_secret}`);

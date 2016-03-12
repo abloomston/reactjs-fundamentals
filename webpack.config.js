@@ -4,6 +4,12 @@ var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
   filename: 'index.html',
   inject: 'body'
 });
+var webpack = require('webpack');
+var GithubCredentialsPlugin = new webpack.DefinePlugin({
+  GITHUB_CLIENT_ID: JSON.stringify(process.env.GITHUB_CLIENT_ID || 'CLIENT_ID'),
+  GITHUB_CLIENT_SECRET: JSON.stringify(process.env.GITHUB_CLIENT_SECRET || 'CLIENT_SECRET')
+});
+console.log(process.env);
 module.exports = {
   entry: [
     './app/index.jsx'
@@ -17,5 +23,5 @@ module.exports = {
     filename: "index_bundle.js",
     path: __dirname + '/dist'
   },
-  plugins: [HTMLWebpackPluginConfig]
+  plugins: [HTMLWebpackPluginConfig, GithubCredentialsPlugin]
 };
