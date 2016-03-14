@@ -47,7 +47,7 @@ var BattleContainer = React.createClass({
   },
 
 	render: function() {
-		return (
+    return (
 			<Battle
               battleState={this.state.battleState}
               playersInfo={this.state.playersInfo}
