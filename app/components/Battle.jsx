@@ -19,7 +19,7 @@ var Battle = function (props) {
   const showUserInfo = props.battleState != 'Loading';
 
   const title = loadingTitle ?
-    (<h1><Loading startText={TitleMap[props.battleState]}/></h1>) :
+    (<h1><Loading startText={TitleMap[props.battleState]} repeatInterval={300}/></h1>) :
     (<h1>{TitleMap[props.battleState]}</h1>);
 
   const userInfo = showUserInfo ?

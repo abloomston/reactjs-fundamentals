@@ -1,21 +1,21 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-const repeatInterval = 300;
-
 var Loading = React.createClass({
 
   propTypes: {
     startText: PropTypes.string.isRequired,
     deltaText: PropTypes.string.isRequired,
-    deltaRepeat: PropTypes.number.isRequired
+    deltaRepeat: PropTypes.number.isRequired,
+    repeatInterval: PropTypes.number.isRequired
   },
 
   getDefaultProps: function () {
     return {
       startText: 'Loading',
       deltaText: '.',
-      deltaRepeat: 4
+      deltaRepeat: 4,
+      repeatInterval: 300
     };
   },
 
@@ -31,12 +31,26 @@ var Loading = React.createClass({
     });
   },
 
+  startTimer: function (interval) {
+    this.intervalId = setInterval(this.updateDeltaCount, interval);
+  },
+
+  killTimer: function () {
+    clearInterval(this.intervalId);
+    this.intervalId = undefined;
+  },
+
   componentDidMount: function() {
-    this.intervalId = setInterval(this.updateDeltaCount, repeatInterval);
+    this.startTimer(this.props.repeatInterval);
+  },
+
+  componentWillReceiveProps: function (nextProps) {
+    this.killTimer();
+    this.startTimer(nextProps.repeatInterval);
   },
 
   componentWillUnmount: function() {
-    clearInterval(this.intervalId);
+    this.killTimer();
   },
 
 	render: function() {
