@@ -1,14 +1,14 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
-var styles = require('../styles/index.jsx');
+var MainContainer = require('../containers/MainContainer.jsx');
 
 var Home = props => (
-	<div className='jumbotron col-sm-12 text-center' style={styles.transparentBg}>
+	<MainContainer>
 		<h1>Github Battle</h1>
 		<p className="lead">Some fancy motto</p>
     <button className="btn btn-lg btn-success" onClick={props.route.startOver}>Get Started</button>
-	</div>
+	</MainContainer>
 );
 
 Home.propTypes = {

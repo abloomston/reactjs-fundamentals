@@ -1,6 +1,7 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
 
+var MainContainer = require('../containers/MainContainer.jsx');
 var UserDetails = require('./UserDetails.jsx');
 var styles = require('../styles/index.jsx');
 
@@ -13,7 +14,7 @@ const TitleMap = {
 };
 
 var Battle = props => (
-  <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
+  <MainContainer>
   <h1>{TitleMap[props.battleState]}</h1>
 
   {props.battleState != 'Loading' &&
@@ -39,7 +40,7 @@ var Battle = props => (
         </div>
     </div>
   }
-  </div>
+  </MainContainer>
 );
 
 Battle.propTypes = {
